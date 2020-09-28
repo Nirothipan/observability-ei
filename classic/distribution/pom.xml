@@ -34,6 +34,24 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.server.feature</artifactId>
+            <version>${carbon.kernel5.version}</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.osgi.feature</artifactId>
+            <version>${carbon.kernel5.version}</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.runtime.feature</artifactId>
+            <version>${carbon.kernel5.version}</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
             <groupId>org.wso2.ei</groupId>
             <artifactId>wso2ad</artifactId>
             <type>zip</type>
@@ -388,57 +406,57 @@
                         </configuration>
                     </execution>
 
-                    <execution>
-                        <id>copy2</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <!--Java 11 related dependencies-->
-                                <artifactItem>
-                                    <groupId>javax.annotation</groupId>
-                                    <artifactId>javax.annotation-api</artifactId>
-                                    <version>${javax.annotation.version}</version>
-                                    <type>jar</type>
-                                </artifactItem>
-                                <artifactItem>
-                                    <groupId>org.wso2.orbit.javax.xml.bind</groupId>
-                                    <artifactId>jaxb-api</artifactId>
-                                    <version>${org.wso2.orbit.javax.xml.bind.version}</version>
-                                    <type>jar</type>
-                                </artifactItem>
-                                <artifactItem>
-                                    <groupId>com.sun.xml.bind</groupId>
-                                    <artifactId>jaxb-impl</artifactId>
-                                    <version>${com.sun.xml.bind.version}</version>
-                                    <type>jar</type>
-                                </artifactItem>
-                                <artifactItem>
-                                    <groupId>org.apache.geronimo.specs</groupId>
-                                    <artifactId>geronimo-activation_1.1_spec</artifactId>
-                                    <version>${org.apache.geronimo.spec.version}</version>
-                                    <type>jar</type>
-                                </artifactItem>
-                                <artifactItem>
-                                    <groupId>com.sun.istack</groupId>
-                                    <artifactId>istack-commons-runtime</artifactId>
-                                    <version>${com.sun.istack.version}</version>
-                                    <type>jar</type>
-                                </artifactItem>
-                                <artifactItem>
-                                    <groupId>com.sun.activation</groupId>
-                                    <artifactId>javax.activation</artifactId>
-                                    <version>${com.sun.activation.version}</version>
-                                    <type>jar</type>
-                                </artifactItem>
-                            </artifactItems>
-                            <outputDirectory>${project.build.directory}/java-dependencies</outputDirectory>
-                            <overWriteReleases>false</overWriteReleases>
-                            <overWriteSnapshots>true</overWriteSnapshots>
-                        </configuration>
-                    </execution>
+<!--                    <execution>-->
+<!--                        <id>copy2</id>-->
+<!--                        <phase>package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>copy</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <artifactItems>-->
+<!--                                &lt;!&ndash;Java 11 related dependencies&ndash;&gt;-->
+<!--                                <artifactItem>-->
+<!--                                    <groupId>javax.annotation</groupId>-->
+<!--                                    <artifactId>javax.annotation-api</artifactId>-->
+<!--                                    <version>${javax.annotation.version}</version>-->
+<!--                                    <type>jar</type>-->
+<!--                                </artifactItem>-->
+<!--                                <artifactItem>-->
+<!--                                    <groupId>org.wso2.orbit.javax.xml.bind</groupId>-->
+<!--                                    <artifactId>jaxb-api</artifactId>-->
+<!--                                    <version>${org.wso2.orbit.javax.xml.bind.version}</version>-->
+<!--                                    <type>jar</type>-->
+<!--                                </artifactItem>-->
+<!--                                <artifactItem>-->
+<!--                                    <groupId>com.sun.xml.bind</groupId>-->
+<!--                                    <artifactId>jaxb-impl</artifactId>-->
+<!--                                    <version>${com.sun.xml.bind.version}</version>-->
+<!--                                    <type>jar</type>-->
+<!--                                </artifactItem>-->
+<!--                                <artifactItem>-->
+<!--                                    <groupId>org.apache.geronimo.specs</groupId>-->
+<!--                                    <artifactId>geronimo-activation_1.1_spec</artifactId>-->
+<!--                                    <version>${org.apache.geronimo.spec.version}</version>-->
+<!--                                    <type>jar</type>-->
+<!--                                </artifactItem>-->
+<!--                                <artifactItem>-->
+<!--                                    <groupId>com.sun.istack</groupId>-->
+<!--                                    <artifactId>istack-commons-runtime</artifactId>-->
+<!--                                    <version>${com.sun.istack.version}</version>-->
+<!--                                    <type>jar</type>-->
+<!--                                </artifactItem>-->
+<!--                                <artifactItem>-->
+<!--                                    <groupId>com.sun.activation</groupId>-->
+<!--                                    <artifactId>javax.activation</artifactId>-->
+<!--                                    <version>${com.sun.activation.version}</version>-->
+<!--                                    <type>jar</type>-->
+<!--                                </artifactItem>-->
+<!--                            </artifactItems>-->
+<!--                            <outputDirectory>${project.build.directory}/java-dependencies</outputDirectory>-->
+<!--                            <overWriteReleases>false</overWriteReleases>-->
+<!--                            <overWriteSnapshots>true</overWriteSnapshots>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
                 </executions>
             </plugin>
 
@@ -466,25 +484,25 @@
                             </artifactItems>
                         </configuration>
                     </execution>
-<!--                    <execution>-->
-<!--                        <id>unpack-wso2analytics-dashboard</id>-->
-<!--                        <phase>package</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>unpack</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <artifactItems>-->
-<!--                                <artifactItem>-->
-<!--                                    <groupId>org.wso2.ei</groupId>-->
-<!--                                    <artifactId>wso2ad</artifactId>-->
-<!--                                    <version>${analytics.dashboard.version}</version>-->
-<!--                                    <type>zip</type>-->
-<!--                                    <overWrite>true</overWrite>-->
-<!--                                    <outputDirectory>target</outputDirectory>-->
-<!--                                </artifactItem>-->
-<!--                            </artifactItems>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
+                    <execution>
+                        <id>unpack-wso2analytics-dashboard</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.wso2.ei</groupId>
+                                    <artifactId>wso2ad</artifactId>
+                                    <version>${analytics.dashboard.version}</version>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>target</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
 
@@ -495,13 +513,25 @@
                 <executions>
                     <execution>
                         <id>p2-repo-generation</id>
-                        <phase>package</phase>
+                        <phase>prepare-package</phase>
                         <goals>
                             <goal>generate-repo</goal>
                         </goals>
                         <configuration>
                             <targetRepository>file:${basedir}/target/p2-repo</targetRepository>
                             <features>
+                                <feature>
+                                    <id>org.wso2.carbon.server.feature</id>
+                                    <version>${carbon.kernel5.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.osgi.feature</id>
+                                    <version>${carbon.kernel5.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.runtime.feature</id>
+                                    <version>${carbon.kernel5.version}</version>
+                                </feature>
                                 <feature>
                                     <id>org.wso2.carbon.dashboards.api.feature</id>
                                     <version>${carbon.dashboards.version}</version>
@@ -527,7 +557,7 @@
                     </execution>
                     <execution>
                         <id>publishing products</id>
-                        <phase>package</phase>
+                        <phase>prepare-package</phase>
                         <goals>
                             <goal>publish-product</goal>
                         </goals>
@@ -540,7 +570,7 @@
                     </execution>
                     <execution>
                         <id>materialize-dashboard</id>
-                        <phase>package</phase>
+                        <phase>prepare-package</phase>
                         <goals>
                             <goal>generate-runtime</goal>
                         </goals>
@@ -567,26 +597,39 @@
                             </destination>
                             <deleteOldRuntimeFiles>true</deleteOldRuntimeFiles>
                             <features>
+                                <!-- Carbon -->
+                                <feature>
+                                    <id>org.wso2.carbon.server.feature.group</id>
+                                    <version>${carbon.kernel5.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.osgi.feature.group</id>
+                                    <version>${carbon.kernel5.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.runtime.feature.group</id>
+                                    <version>${carbon.kernel5.version}</version>
+                                </feature>
                                 <feature>
                                     <id>org.wso2.carbon.dashboards.api.feature.group</id>
                                     <version>${carbon.dashboards.version}</version>
                                 </feature>
-                                <feature>
-                                    <id>org.wso2.carbon.dashboards.portal.feature.group</id>
-                                    <version>${carbon.dashboards.version}</version>
-                                </feature>
-                                <feature>
-                                    <id>org.wso2.carbon.dashboards.samples.feature.group</id>
-                                    <version>${carbon.dashboards.version}</version>
-                                </feature>
-                                <feature>
-                                    <id>org.wso2.carbon.status.dashboard.core.feature.group</id>
-                                    <version>${status.dashboard.feature.version}</version>
-                                </feature>
-                                <feature>
-                                    <id>org.wso2.carbon.status.dashboard.web.feature.group</id>
-                                    <version>${status.dashboard.feature.version}</version>
-                                </feature>
+<!--                                <feature>-->
+<!--                                    <id>org.wso2.carbon.dashboards.portal.feature.group</id>-->
+<!--                                    <version>${carbon.dashboards.version}</version>-->
+<!--                                </feature>-->
+<!--                                <feature>-->
+<!--                                    <id>org.wso2.carbon.dashboards.samples.feature.group</id>-->
+<!--                                    <version>${carbon.dashboards.version}</version>-->
+<!--                                </feature>-->
+<!--                                <feature>-->
+<!--                                    <id>org.wso2.carbon.status.dashboard.core.feature.group</id>-->
+<!--                                    <version>${status.dashboard.feature.version}</version>-->
+<!--                                </feature>-->
+<!--                                <feature>-->
+<!--                                    <id>org.wso2.carbon.status.dashboard.web.feature.group</id>-->
+<!--                                    <version>${status.dashboard.feature.version}</version>-->
+<!--                                </feature>-->
                             </features>
                         </configuration>
                     </execution>
